@@ -17,6 +17,12 @@ namespace BookListRazor.Repository
             _context = context;
             _dbSet = _context.Set<TEntity>();
         }
+
+        public void Add(TEntity entity)
+        {
+            _dbSet.Add(entity);
+        }
+
         public IEnumerable<TEntity> GetAll()
         {
             return _dbSet.ToList();

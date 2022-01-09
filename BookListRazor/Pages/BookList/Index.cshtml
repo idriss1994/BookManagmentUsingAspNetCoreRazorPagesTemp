@@ -15,10 +15,13 @@
     <div class="col-12 border p-3 mt-3">
         @if (Model.Books.Count() > 0)
         {
-            <table class="table table-striped border">
+            <table class="table table-striped border mb-0">
                 <tr class="table-secondary">
                     <th>
                         <label asp-for="Books.FirstOrDefault().Name"></label>
+                    </th>
+                    <th>
+                        <label asp-for="Books.FirstOrDefault().ISBN"></label>
                     </th>
                     <th>
                         @*@Html.DisplayNameFor(m => m.Books.FirstOrDefault().Author)*@
@@ -28,18 +31,21 @@
                 </tr>
                 @foreach (var book in Model.Books)
                 {
-            <tr>
-                <td>
-                    @Html.DisplayFor(m => book.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(m => book.Author)
-                </td>
-                <td>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    <a class="btn btn-success btn-sm text-white">Edit</a>
-                </td>
-            </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => book.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => book.ISBN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => book.Author)
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <a class="btn btn-success btn-sm text-white">Edit</a>
+                        </td>
+                    </tr>
                 }
             </table>
         }

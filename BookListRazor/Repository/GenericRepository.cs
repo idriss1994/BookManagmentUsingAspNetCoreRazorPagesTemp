@@ -23,9 +23,25 @@ namespace BookListRazor.Repository
             _dbSet.Add(entity);
         }
 
+        public void Delete(TEntity entity)
+        {
+            _dbSet.Remove(entity);
+        }
+
         public IEnumerable<TEntity> GetAll()
         {
             return _dbSet.ToList();
+        }
+
+        public TEntity GetById(object id)
+        {
+            return _dbSet.Find(id);
+        }
+
+        public void Update(TEntity entity)
+        {
+            _dbSet.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

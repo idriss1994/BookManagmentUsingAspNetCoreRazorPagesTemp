@@ -22,5 +22,20 @@ namespace BookListRazor.Pages.BookList
         {
             Books = _unitOfWork.EntityRepository.GetAll();
         }
+
+        public IActionResult OnPostDelete(int id)
+        {
+            id = 0;
+            var book = _unitOfWork.EntityRepository.GetById(id);
+            if (book == null)
+            {
+                //return RedirectToPage("/Error");
+                throw new Exception($"Book with Id {id} canot be found");
+            } 
+
+            _unitOfWork.EntityRepository.Delete(book);
+            _unitOfWork.Save();
+            return RedirectToPage("Index");
+        }
     }
 }

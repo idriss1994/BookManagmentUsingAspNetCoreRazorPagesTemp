@@ -9,5 +9,8 @@ namespace BookListRazor.Repository
     {
         IEnumerable<TEntity> GetAll();
         void Add(TEntity entity);
+        TEntity GetById(object id);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
     }
 }
